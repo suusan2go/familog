@@ -2,14 +2,114 @@ syntax = "proto3";
 option go_package = "github.com/suusan2go/familog";
 package familog;
 
-message Request {
+import "google/protobuf/timestamp.proto"
+
+message User {
   string id = 1;
+  string name = 2;
+  string avatar_url = 3;
 }
 
-message Response {
+message Diary {
   string id = 1;
+  string name = 2;
+}
+
+message DiaryEntry {
+  string id = 1;
+  string body = 2;
+  string emoji = 3;
+  User user = 4;
+  string cover_image_url = 5;
+  repeated string image_urls = 6;
+  google.protobuf.Timestamp published_at = 7;
+}
+
+message RegisterDeviceRequest {
+  string device_token = 1;
+}
+message RegisterDeviceResponse {
+}
+
+message AllDiariesRequest {
+}
+message AllDiariesResponse {
+  repeated Diary diaries = 1;
+}
+
+message FindDiaryEntriesRequest {
+  string diary_id = 1;
+}
+message FindDiaryEntriesResponse {
+  repeated DiaryEntry diary_entries = 1;
+}
+
+message FindDiaryEntryByIdRequest {
+  string diary_entry_id = 1;
+}
+message FindDiaryEntryByIdResponse {
+  repeated DiaryEntry diary_entries = 1;
+}
+
+message DiaryEntryForm {
+  string body = 1;
+  string emoji = 2;
+  string cover_image_blob = 3;
+  repeated string image_blobs = 4;
+}
+message PublishDiaryEntryRequest {
+  DiaryEntryForm diary_entry_form = 1;
+}
+message PublishDiaryEntryResponse{
+  DiaryEntry diary_entry = 1;
+}
+
+message UpdateDiaryEntryRequest {
+  string diary_entry_id = 1;
+  DiaryEntryForm diary_entry_form = 2;
+}
+message UpdateDiaryEntryResponse {
+  DiaryEntry diary_entry = 1;
+}
+
+message ShowMyProfileRequest {
+}
+message ShowMyProfileResponse {
+  User user = 1;
+}
+
+message FindProfileByUserIdRequest {
+  string user_id = 1;
+}
+message FindProfileByUserIdResponse {
+  User user = 1;
+}
+
+message UpdateProfileRequest {
+  string name = 1;
+  string avatar_blob = 2;
+}
+message UpdateDiaryEntryResponse {
+  User user = 1;
 }
 
 service Familog {
-  rpc Read (Request) returns (Response) {}
+  // デバイスを登録する
+  rpc RegisterDevice (RegisterDeviceRequest) returns (RegisterDeviceResponse) {}
+  // 日記帳を検索する
+  rpc AllDiaries (AllDiariesRequest) returns (AllDiariesResponse) {}
+  // 日記を検索するする
+  rpc FindDiaryEntries (FindDiaryEntiresRequest) returns (FindDiaryEntriesResponse) {}
+  // 日記をみる
+  rpc FindDiaryEntryById (FindDiaryByIdRequest) returns (FindDiaryByIdResponse) {}
+  // 日記を投稿する
+  rpc PublishDiaryEntry (PublishDiaryEntryRequest) returns (PublishDiaryEntryResponse) {}
+  // 日記を更新する
+  rpc UpdateDiaryEntry (UpdateDiaryEntryRequest) returns (UpdateDiaryEntryResponse) {}
+  // 自分のプロフィールを表示する
+  rpc ShowMyProfile (ShowMyProfileRequest) returns (ShowMyProfileResponse) {}
+  // 他のプロフィールを表示する
+  rpc FindProfileByUserId (FindProfileByUserIdRequest) returns (FindProfileByUserIdResponse) {}
+  // プロフィールを更新する
+  rpc UpdateProfile (UpdateProfileRequest) returns (UpdateProfileResponse) {}
 }
