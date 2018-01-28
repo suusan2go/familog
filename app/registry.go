@@ -11,6 +11,10 @@ type Registry struct {
 	dsc *datastore.Client
 }
 
+func NewRegistry(c *datastore.Client) Registry {
+	return Registry{dsc: c}
+}
+
 // DeviceRepository returns implemented Struct
 func (r Registry) DeviceRepository() domain.DeviceRepository {
 	return infrastructure.NewDatastoreDeviceRepository(r.dsc)

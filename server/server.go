@@ -7,5 +7,5 @@ import (
 
 type FamilogServer struct {
 	familog.FamilogServer
-	registry app.Registry
+	Registry app.Registry
 }

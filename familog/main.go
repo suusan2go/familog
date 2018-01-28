@@ -18,12 +18,12 @@ import (
 
 func main() {
 	s := &server.FamilogServer{}
-	dsc, err = configureDatastoreDB("dummy")
+	dsc, err := configureDatastoreDB("dummy")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(-1)
 	}
-	s.Registry = &app.Registry{dsc: dsc}
+	s.Registry = app.NewRegistry(dsc)
 
 	lile.Name("familog")
 	lile.Server(func(g *grpc.Server) {
