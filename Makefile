@@ -13,5 +13,8 @@ get:
 
 ci: get test
 
-docker:
-	docker build . -t .:latest
+docker-build:
+	docker build -t gcr.io/${PROJECT_ID}/familog:latest .
+
+docker-push:
+	gcloud docker -- push gcr.io/${PROJECT_ID}/familog:latest
