@@ -8,5 +8,6 @@ import (
 )
 
 func (s FamilogServer) RegisterDevice(ctx context.Context, r *familog.RegisterDeviceRequest) (*familog.RegisterDeviceResponse, error) {
+
 	return nil, errors.New("not yet implemented")
 }
