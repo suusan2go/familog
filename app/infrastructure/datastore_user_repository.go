@@ -16,6 +16,11 @@ type DatastoreUserRepository struct {
 	client *datastore.Client
 }
 
+// NewDatastoreUserRepository returns NewDatastoreUserRepository struct
+func NewDatastoreUserRepository(c *datastore.Client) DatastoreUserRepository {
+	return DatastoreUserRepository{client: c}
+}
+
 // Save save doman.User to datastore
 func (rp DatastoreUserRepository) Save(u *domain.User) error {
 	ctx := context.Background()
@@ -32,6 +37,6 @@ func (rp DatastoreUserRepository) Save(u *domain.User) error {
 	if err != nil {
 		return fmt.Errorf("datastoredb: could not put User: %v", err)
 	}
-	u.ID = k.ID
+	u.ID = domain.UserID(k.ID)
 	return nil
 }

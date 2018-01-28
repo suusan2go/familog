@@ -13,10 +13,10 @@ type Registry struct {
 
 // DeviceRepository returns implemented Struct
 func (r Registry) DeviceRepository() domain.DeviceRepository {
-	return infrastructure.DeviceRepository{client: r.dsc}
+	return infrastructure.NewDatastoreDeviceRepository(r.dsc)
 }
 
 // UserRepository returns implemented Struct
 func (r Registry) UserRepository() domain.UserRepository {
-	return infrastructure.UserRepository{client: r.dsc}
+	return infrastructure.NewDatastoreUserRepository(r.dsc)
 }

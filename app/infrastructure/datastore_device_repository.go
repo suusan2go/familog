@@ -15,6 +15,11 @@ type DatastoreDeviceRepository struct {
 	client *datastore.Client
 }
 
+// NewDatastoreDeviceRepository returns NewDatastoreDeviceRepository struct
+func NewDatastoreDeviceRepository(c *datastore.Client) DatastoreDeviceRepository {
+	return DatastoreDeviceRepository{client: c}
+}
+
 // Save save Device to Datastore
 func (rp DatastoreDeviceRepository) Save(d *domain.Device) error {
 	ctx := context.Background()
