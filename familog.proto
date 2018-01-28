@@ -2,7 +2,7 @@ syntax = "proto3";
 option go_package = "github.com/suusan2go/familog";
 package familog;
 
-import "google/protobuf/timestamp.proto"
+import "google/protobuf/timestamp.proto";
 
 message User {
   string id = 1;
@@ -26,7 +26,7 @@ message DiaryEntry {
 }
 
 message RegisterDeviceRequest {
-  string device_token = 1;
+  string device_id = 1;
 }
 message RegisterDeviceResponse {
 }
@@ -89,7 +89,7 @@ message UpdateProfileRequest {
   string name = 1;
   string avatar_blob = 2;
 }
-message UpdateDiaryEntryResponse {
+message UpdateProfileResponse {
   User user = 1;
 }
 
@@ -99,9 +99,9 @@ service Familog {
   // 日記帳を検索する
   rpc AllDiaries (AllDiariesRequest) returns (AllDiariesResponse) {}
   // 日記を検索するする
-  rpc FindDiaryEntries (FindDiaryEntiresRequest) returns (FindDiaryEntriesResponse) {}
+  rpc FindDiaryEntries (FindDiaryEntriesRequest) returns (FindDiaryEntriesResponse) {}
   // 日記をみる
-  rpc FindDiaryEntryById (FindDiaryByIdRequest) returns (FindDiaryByIdResponse) {}
+  rpc FindDiaryEntryById (FindDiaryEntryByIdRequest) returns (FindDiaryEntryByIdResponse) {}
   // 日記を投稿する
   rpc PublishDiaryEntry (PublishDiaryEntryRequest) returns (PublishDiaryEntryResponse) {}
   // 日記を更新する
