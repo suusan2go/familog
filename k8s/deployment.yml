@@ -1,12 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: familog
+  name: familog-backend
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: familog
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -14,11 +11,37 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: familog
+        app: familog-backend
     spec:
       containers:
       - image: gcr.io/familog-193013/familog:latest
         imagePullPolicy: Always
-        name: familog
+        name: familog-backend
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: grpcwebproxy
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: grpcwebproxy 
+    spec:
+      containers:
+      - image: gcr.io/familog-193013/grpcwebproxy:latest
+        imagePullPolicy: Always
+        name: grpcwebproxy 
+        ports:
+          - containerPort: 80
+            name: http
+        env:
+          - name: BACKEND_HOST
+            value: familog-backend.default:8000
