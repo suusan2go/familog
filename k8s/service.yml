@@ -7,7 +7,7 @@ spec:
     app: grpcwebproxy
   ports:
   - protocol: TCP
-    port: 80
+    port: 8080
   type: NodePort
 ---
 apiVersion: v1

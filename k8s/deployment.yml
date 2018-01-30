@@ -40,7 +40,7 @@ spec:
         imagePullPolicy: Always
         name: grpcwebproxy 
         ports:
-          - containerPort: 80
+          - containerPort: 8080
             name: http
         env:
           - name: BACKEND_HOST
