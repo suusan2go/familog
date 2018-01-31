@@ -1,8 +1,8 @@
-memo = "99943d0eddea8cbf5087c936a776d31dbd444afba6858e86ef6ab2461f709999"
+memo = "7f75ca7453ae07f3071bfea96fdeac622e1f6edfda74b2293bf7a838e7cfbf8b"
 
 [[projects]]
   name = "cloud.google.com/go"
-  packages = ["compute/metadata","iam","internal/optional","internal/version","pubsub","pubsub/apiv1"]
+  packages = ["compute/metadata","datastore","iam","internal","internal/atomiccache","internal/fields","internal/optional","internal/version","pubsub","pubsub/apiv1"]
   revision = "767c40d6a2e058483c25fa193e963a22da17236d"
   version = "v0.18.0"
 
@@ -63,7 +63,7 @@ memo = "99943d0eddea8cbf5087c936a776d31dbd444afba6858e86ef6ab2461f709999"
 [[projects]]
   branch = "master"
   name = "github.com/golang/protobuf"
-  packages = ["proto","protoc-gen-go/descriptor","ptypes","ptypes/any","ptypes/duration","ptypes/empty","ptypes/timestamp"]
+  packages = ["proto","protoc-gen-go/descriptor","ptypes","ptypes/any","ptypes/duration","ptypes/empty","ptypes/struct","ptypes/timestamp","ptypes/wrappers"]
   revision = "925541529c1fa6821df4e44ce2723319eb2be768"
 
 [[projects]]
@@ -95,6 +95,12 @@ memo = "99943d0eddea8cbf5087c936a776d31dbd444afba6858e86ef6ab2461f709999"
   name = "github.com/grpc-ecosystem/grpc-opentracing"
   packages = ["go/otgrpc"]
   revision = "0e7658f8ee99ee5aa683e2a032b8880091b7a055"
+
+[[projects]]
+  name = "github.com/improbable-eng/grpc-web"
+  packages = ["go/grpcweb"]
+  revision = "7174732598544bdecfa12fb81ca2f1601cf1b587"
+  version = "0.3.0-beta"
 
 [[projects]]
   name = "github.com/inconshreveable/mousetrap"
@@ -163,6 +169,12 @@ memo = "99943d0eddea8cbf5087c936a776d31dbd444afba6858e86ef6ab2461f709999"
   version = "v0.8.0"
 
 [[projects]]
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
+
+[[projects]]
   name = "github.com/prometheus/client_golang"
   packages = ["prometheus"]
   revision = "c5b7fccd204277076155f10851dad72b76a49317"
@@ -193,6 +205,12 @@ memo = "99943d0eddea8cbf5087c936a776d31dbd444afba6858e86ef6ab2461f709999"
   revision = "8732c616f52954686704c8645fe1a9d59e9df7c1"
 
 [[projects]]
+  name = "github.com/rs/cors"
+  packages = ["."]
+  revision = "7af7a1e09ba336d2ea14b1ce73bf693c6837dbf6"
+  version = "v1.2"
+
+[[projects]]
   name = "github.com/satori/go.uuid"
   packages = ["."]
   revision = "f58768cc1a7a7e77a3bd49e98cdd21419399b6a3"
@@ -215,6 +233,12 @@ memo = "99943d0eddea8cbf5087c936a776d31dbd444afba6858e86ef6ab2461f709999"
   packages = ["."]
   revision = "e57e3eeb33f795204c1ca35f56c44f83227c6e66"
   version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/stretchr/testify"
+  packages = ["assert"]
+  revision = "b91bfb9ebec76498946beb6af7c0230c7cc7ba6c"
+  version = "v1.2.0"
 
 [[projects]]
   branch = "master"
@@ -255,7 +279,7 @@ memo = "99943d0eddea8cbf5087c936a776d31dbd444afba6858e86ef6ab2461f709999"
 [[projects]]
   branch = "master"
   name = "google.golang.org/api"
-  packages = ["googleapi/transport","internal","iterator","option","support/bundler","transport","transport/grpc","transport/http"]
+  packages = ["googleapi","googleapi/internal/uritemplates","googleapi/transport","internal","iterator","option","support/bundler","transport","transport/grpc","transport/http"]
   revision = "61a5611191ce37af3dca50af6d9265cb273ccb88"
 
 [[projects]]
@@ -267,7 +291,7 @@ memo = "99943d0eddea8cbf5087c936a776d31dbd444afba6858e86ef6ab2461f709999"
 [[projects]]
   branch = "master"
   name = "google.golang.org/genproto"
-  packages = ["googleapis/api/annotations","googleapis/iam/v1","googleapis/pubsub/v1","googleapis/rpc/status","protobuf/field_mask"]
+  packages = ["googleapis/api/annotations","googleapis/datastore/v1","googleapis/iam/v1","googleapis/pubsub/v1","googleapis/rpc/status","googleapis/type/latlng","protobuf/field_mask"]
   revision = "4eb30f4778eed4c258ba66527a0d4f9ec8a36c45"
 
 [[projects]]
