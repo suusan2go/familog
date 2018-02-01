@@ -14,7 +14,11 @@ get:
 ci: get test
 
 docker-build:
-	docker build -t gcr.io/${PROJECT_ID}/familog:latest .
+	$(eval HASH := $(shell git rev-parse --short HEAD))
+	docker build -t gcr.io/${PROJECT_ID}/familog:${HASH} .
+	docker tag gcr.io/${PROJECT_ID}/familog:${HASH} gcr.io/${PROJECT_ID}/familog:${HASH}
 
 docker-push:
+	$(eval HASH := $(shell git rev-parse --short HEAD))
+	gcloud docker -- push gcr.io/${PROJECT_ID}/familog:${HASH}
 	gcloud docker -- push gcr.io/${PROJECT_ID}/familog:latest
