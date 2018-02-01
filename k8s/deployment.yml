@@ -1,12 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: familog
+  name: familog-backend
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: familog
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -14,11 +11,10 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: familog
+        app: familog-backend
     spec:
       containers:
-      - image: gcr.io/familog-193013/familog:latest
+      - image: gcr.io/familog-193013/familog:14b772a
         imagePullPolicy: Always
-        name: familog
+        name: familog-backend
