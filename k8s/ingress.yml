@@ -4,5 +4,5 @@ metadata:
   name: familog-ingress
 spec:
   backend:
-    serviceName: grpcwebproxy
-    servicePort: 8080
+    serviceName: familog-backend
+    servicePort: 9000
