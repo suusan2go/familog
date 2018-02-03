@@ -11,7 +11,10 @@ func (s FamilogServer) RegisterDevice(ctx context.Context, r *familog.RegisterDe
 		s.Registry.DeviceRepository(),
 		s.Registry.UserRepository(),
 	)
-	u.Register(r.GetDeviceId())
+	if _, err := u.Register(r.GetDeviceId()); err != nil {
+		return nil, err
+	}
+
 	res := &familog.RegisterDeviceResponse{}
 	return res, nil
 }
