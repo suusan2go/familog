@@ -10,6 +10,13 @@ type RegisterDeviceUsecase struct {
 	userRepository   domain.UserRepository
 }
 
+func NewRegisterDeviceUsecase(dr domain.DeviceRepository, ur domain.UserRepository) RegisterDeviceUsecase {
+	return RegisterDeviceUsecase{
+		deviceRepository: dr,
+		userRepository:   ur,
+	}
+}
+
 // Register find or register devie
 func (usecase RegisterDeviceUsecase) Register(deviceID string) (*domain.Device, error) {
 	device, err := usecase.deviceRepository.FindByDeviceID(deviceID)
