@@ -31,18 +31,6 @@ func main() {
 	lile.Name("familog")
 	lile.Server(func(g *grpc.Server) {
 		familog.RegisterFamilogServer(g, s)
-		wrappedServer := grpcweb.WrapServer(g)
-		handler := func(resp http.ResponseWriter, req *http.Request) {
-			if req.URL.Path != "/" {
-				wrappedServer.ServeHttp(resp, req)
-				logrus.Infof("%s", req.URL.Path)
-				return
-			}
-			resp.WriteHeader(http.StatusOK)
-			fmt.Fprintf(resp, "ok")
-		}
-		http.HandleFunc("/", handler)
-		logrus.Infof("grpcwebproxy runs at :9000")
 	})
 
 	pubsub.SetClient(&pubsub.Client{
