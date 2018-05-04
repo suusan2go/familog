@@ -1,12 +1,14 @@
 package server
 
 import (
-	"errors"
+	// "errors"
 
 	"github.com/suusan2go/familog"
 	context "golang.org/x/net/context"
 )
 
 func (s FamilogServer) AllDiaries(ctx context.Context, r *familog.AllDiariesRequest) (*familog.AllDiariesResponse, error) {
-	return nil, errors.New("not yet implemented")
+	res := familog.AllDiariesResponse{}
+	res.Diaries = []*familog.Diary{}
+	return &res, nil
 }
