@@ -3,7 +3,11 @@
 
 proto:
 	go get github.com/golang/protobuf/protoc-gen-go
-	protoc -I . familog.proto --lile-server_out=. --go_out=plugins=grpc:$$GOPATH/src
+	protoc -I . -I ./thirdparty familog.proto \
+	  --lile-server_out=. \
+		--go_out=plugins=grpc:$$GOPATH/src --descriptor_set_out=api_descriptor.pb \
+    --include_imports \
+    --include_source_info
 
 test:
 	go test -v ./... -cover
