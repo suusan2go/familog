@@ -5,14 +5,14 @@ package familog;
 import "thirdparty/google/protobuf/timestamp.proto";
 
 message User {
-  string id = 1;
+  int32 id = 1;
   string name = 2;
   string avatar_url = 3;
 }
 
 message Diary {
-  string id = 1;
-  string name = 2;
+  int32 id = 1;
+  string Title = 2;
 }
 
 message DiaryEntry {
@@ -29,7 +29,7 @@ message StartDiaryRequest {
   string title = 1;
 }
 message StartDiaryResponse {
-  repeated Diary diaries = 1;
+  Diary diary = 1;
 }
 
 message SubscribeDiaryRequest {
