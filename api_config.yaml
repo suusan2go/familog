@@ -38,8 +38,7 @@ apis:
 #
 # API usage restrictions.
 #
-# usage:
-#   rules:
-#   # ListShelves methods can be called without an API Key.
-#   - selector: familog.Bookstore.ListShelves
-#     allow_unregistered_calls: true
+usage:
+  rules:
+  - selector: "*"
+    allow_unregistered_calls: true
