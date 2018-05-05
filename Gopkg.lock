@@ -1,4 +1,4 @@
-memo = "7f75ca7453ae07f3071bfea96fdeac622e1f6edfda74b2293bf7a838e7cfbf8b"
+memo = "89d52ce11f133bef60ebb7abf976731b0faf0360bc516dca96e39c71985c8e6d"
 
 [[projects]]
   name = "cloud.google.com/go"
@@ -95,12 +95,6 @@ memo = "7f75ca7453ae07f3071bfea96fdeac622e1f6edfda74b2293bf7a838e7cfbf8b"
   name = "github.com/grpc-ecosystem/grpc-opentracing"
   packages = ["go/otgrpc"]
   revision = "0e7658f8ee99ee5aa683e2a032b8880091b7a055"
-
-[[projects]]
-  name = "github.com/improbable-eng/grpc-web"
-  packages = ["go/grpcweb"]
-  revision = "7174732598544bdecfa12fb81ca2f1601cf1b587"
-  version = "0.3.0-beta"
 
 [[projects]]
   name = "github.com/inconshreveable/mousetrap"
@@ -203,12 +197,6 @@ memo = "7f75ca7453ae07f3071bfea96fdeac622e1f6edfda74b2293bf7a838e7cfbf8b"
   name = "github.com/rcrowley/go-metrics"
   packages = ["."]
   revision = "8732c616f52954686704c8645fe1a9d59e9df7c1"
-
-[[projects]]
-  name = "github.com/rs/cors"
-  packages = ["."]
-  revision = "7af7a1e09ba336d2ea14b1ce73bf693c6837dbf6"
-  version = "v1.2"
 
 [[projects]]
   name = "github.com/satori/go.uuid"
