@@ -8,11 +8,11 @@ import (
 	context "golang.org/x/net/context"
 )
 
-func TestFindDiaryEntryById(t *testing.T) {
+func TestReadDiaryEntry(t *testing.T) {
 	ctx := context.Background()
-	req := &familog.FindDiaryEntryByIdRequest{}
+	req := &familog.ReadDiaryEntryRequest{}
 
-	res, err := cli.FindDiaryEntryById(ctx, req)
+	res, err := cli.ReadDiaryEntry(ctx, req)
 	assert.Nil(t, err)
 	assert.NotNil(t, res)
 }

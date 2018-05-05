@@ -7,7 +7,6 @@ import (
 	context "golang.org/x/net/context"
 )
 
-func (s FamilogServer) RegisterDevice(ctx context.Context, r *familog.RegisterDeviceRequest) (*familog.RegisterDeviceResponse, error) {
-
+func (s FamilogServer) ReadDiaryEntry(ctx context.Context, r *familog.ReadDiaryEntryRequest) (*familog.ReadDiaryEntryResponse, error) {
 	return nil, errors.New("not yet implemented")
 }

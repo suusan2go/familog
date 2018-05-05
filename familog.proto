@@ -2,7 +2,7 @@ syntax = "proto3";
 option go_package = "github.com/suusan2go/familog";
 package familog;
 
-import "google/protobuf/timestamp.proto";
+import "thirdparty/google/protobuf/timestamp.proto";
 
 message User {
   string id = 1;
@@ -25,10 +25,17 @@ message DiaryEntry {
   google.protobuf.Timestamp published_at = 7;
 }
 
-message RegisterDeviceRequest {
-  string device_id = 1;
+message StartDiaryRequest {
+  string title = 1;
 }
-message RegisterDeviceResponse {
+message StartDiaryResponse {
+  repeated Diary diaries = 1;
+}
+
+message SubscribeDiaryRequest {
+  string secret_code = 1;
+}
+message SubscribeDiaryResponse {
 }
 
 message AllDiariesRequest {
@@ -44,10 +51,10 @@ message FindDiaryEntriesResponse {
   repeated DiaryEntry diary_entries = 1;
 }
 
-message FindDiaryEntryByIdRequest {
+message ReadDiaryEntryRequest {
   string diary_entry_id = 1;
 }
-message FindDiaryEntryByIdResponse {
+message ReadDiaryEntryResponse {
   repeated DiaryEntry diary_entries = 1;
 }
 
@@ -94,14 +101,16 @@ message UpdateProfileResponse {
 }
 
 service Familog {
-  // デバイスを登録する
-  rpc RegisterDevice (RegisterDeviceRequest) returns (RegisterDeviceResponse) {}
+  // 日記を始める
+  rpc StartDiary (StartDiaryRequest) returns (StartDiaryResponse) {}
+  // 日記を購読する
+  rpc SubscribeDiary (SubscribeDiaryRequest) returns (SubscribeDiaryResponse) {}
   // 日記帳を検索する
   rpc AllDiaries (AllDiariesRequest) returns (AllDiariesResponse) {}
-  // 日記を検索するする
+  // 日記を検索する
   rpc FindDiaryEntries (FindDiaryEntriesRequest) returns (FindDiaryEntriesResponse) {}
   // 日記をみる
-  rpc FindDiaryEntryById (FindDiaryEntryByIdRequest) returns (FindDiaryEntryByIdResponse) {}
+  rpc ReadDiaryEntry (ReadDiaryEntryRequest) returns (ReadDiaryEntryResponse) {}
   // 日記を投稿する
   rpc PublishDiaryEntry (PublishDiaryEntryRequest) returns (PublishDiaryEntryResponse) {}
   // 日記を更新する

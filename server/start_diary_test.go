@@ -8,11 +8,11 @@ import (
 	context "golang.org/x/net/context"
 )
 
-func TestRegisterDevice(t *testing.T) {
+func TestStartDiary(t *testing.T) {
 	ctx := context.Background()
-	req := &familog.RegisterDeviceRequest{}
+	req := &familog.StartDiaryRequest{}
 
-	res, err := cli.RegisterDevice(ctx, req)
+	res, err := cli.StartDiary(ctx, req)
 	assert.Nil(t, err)
 	assert.NotNil(t, res)
 }

@@ -7,6 +7,6 @@ import (
 	context "golang.org/x/net/context"
 )
 
-func (s FamilogServer) AllDiaries(ctx context.Context, r *familog.AllDiariesRequest) (*familog.AllDiariesResponse, error) {
+func (s FamilogServer) SubscribeDiary(ctx context.Context, r *familog.SubscribeDiaryRequest) (*familog.SubscribeDiaryResponse, error) {
 	return nil, errors.New("not yet implemented")
 }
