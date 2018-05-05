@@ -1,6 +1,6 @@
 package domain
 
-// UserRepository persist or find user from repository
 type UserRepository interface {
-	Save(*User) error
+	Save(u *User) error
+	FindByIds(ids []UserID) ([]User, error)
 }

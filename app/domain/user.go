@@ -10,11 +10,13 @@ type UserID int64
 // User User using this service
 type User struct {
 	ID        UserID
+	Name      string
+	ImageUrl  string
 	UpdatedAt time.Time
 	CreatedAt time.Time
 }
 
-// NewUser create new User Struct
+// NewUser create new User struct
 func NewUser() User {
 	return User{}
 }
