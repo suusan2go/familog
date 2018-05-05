@@ -18,7 +18,7 @@ import (
 
 func main() {
 	s := &server.FamilogServer{}
-	dsc, err := configureDatastoreDB("dummy")
+	dsc, err := configureDatastoreDB("familog-193013")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(-1)

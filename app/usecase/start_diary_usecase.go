@@ -19,6 +19,10 @@ type StartDiaryOutput struct {
 	Diary domain.Diary
 }
 
+func NewStartDiaryUsecase(diaryRepo domain.DiaryRepository) StartDiaryUsecase {
+	return StartDiaryUsecase{diaryRepo: diaryRepo}
+}
+
 // StartDiary start new diary
 func (us *StartDiaryUsecase) StartDiary(input StartDiaryInput) (*StartDiaryOutput, error) {
 	diary := domain.NewDiary(input.Title)
