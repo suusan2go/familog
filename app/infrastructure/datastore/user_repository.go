@@ -1,4 +1,4 @@
-package infrastructure
+package datastore
 
 import (
 	"context"
@@ -11,18 +11,18 @@ import (
 
 const userKind = "User"
 
-// DatastoreUserRepository implementation for domain.UserRepository by Datastore
-type DatastoreUserRepository struct {
+// UserRepository implementation for domain.UserRepository by Datastore
+type UserRepository struct {
 	client *datastore.Client
 }
 
-// NewDatastoreUserRepository returns NewDatastoreUserRepository struct
-func NewDatastoreUserRepository(c *datastore.Client) DatastoreUserRepository {
-	return DatastoreUserRepository{client: c}
+// NewUserRepository returns NewUserRepository struct
+func NewUserRepository(c *datastore.Client) UserRepository {
+	return UserRepository{client: c}
 }
 
-// Save save doman.User to datastore
-func (rp DatastoreUserRepository) Save(u *domain.User) error {
+// Save save domain.User to datastore
+func (rp UserRepository) Save(u *domain.User) error {
 	ctx := context.Background()
 	var k *datastore.Key
 	if u.ID == 0 {

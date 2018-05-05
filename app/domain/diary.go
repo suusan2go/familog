@@ -16,6 +16,11 @@ type Diary struct {
 	CreatedAt   time.Time
 }
 
+func (d *Diary) AddSubscriber(id UserID) {
+	d.Subscribers = append(d.Subscribers, id)
+}
+
+// NewDiary create new diary struct
 func NewDiary(title string) *Diary {
 	current := time.Now()
 	return &Diary{
