@@ -33,7 +33,7 @@ spec:
         args: [
           "--http2_port=8080",
           "--service=familog.endpoints.familog-193013.cloud.goog",
-          "--version=2018-05-06r1",
+          "--version=2018-05-06r2",
           "--backend=grpc://127.0.0.1:8000"
         ]
         ports:
