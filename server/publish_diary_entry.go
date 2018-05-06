@@ -12,7 +12,7 @@ import (
 
 func (s FamilogServer) PublishDiaryEntry(ctx context.Context, r *familog.PublishDiaryEntryRequest) (*familog.PublishDiaryEntryResponse, error) {
 	us := usecase.NewPublishDiaryEntryUsecase(s.Registry.DiaryEntryRepository())
-	output, err := us.PublishDiary(usecase.PublishDiaryEntryInput{
+	output, err := us.PublishDiaryEntry(usecase.PublishDiaryEntryInput{
 		Body:     r.DiaryEntryForm.Body,
 		Emoji:    r.DiaryEntryForm.Emoji,
 		AuthorID: domain.UserID(0), // TODO

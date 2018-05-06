@@ -5,6 +5,7 @@ import (
 )
 
 type PublishDiaryEntryUsecase struct {
+	diaryRepo      domain.DiaryRepository
 	diaryEntryRepo domain.DiaryEntryRepository
 }
 
@@ -14,6 +15,7 @@ type PublishDiaryEntryInput struct {
 	Images   []string
 	AuthorID domain.UserID
 	Emoji    string
+	DiaryID  domain.DiaryID
 }
 
 // PublishDiaryEntryOutput output parameter
@@ -25,13 +27,17 @@ func NewPublishDiaryEntryUsecase(diaryEntryRepo domain.DiaryEntryRepository) Pub
 	return PublishDiaryEntryUsecase{diaryEntryRepo: diaryEntryRepo}
 }
 
-func (us *PublishDiaryEntryUsecase) PublishDiary(input PublishDiaryEntryInput) (*PublishDiaryEntryOutput, error) {
-	de := &domain.DiaryEntry{
-		AuthorID: input.AuthorID,
-		Body:     input.Body,
-		Images:   input.Images,
-		Emoji:    input.Emoji,
+func (us *PublishDiaryEntryUsecase) PublishDiaryEntry(input PublishDiaryEntryInput) (*PublishDiaryEntryOutput, error) {
+	d, err := us.diaryRepo.FindByID(input.DiaryID)
+	if err != nil {
+		return nil, err
 	}
+	de := d.AddEntry(
+		input.AuthorID,
+		input.Body,
+		input.Images,
+		input.Emoji,
+	)
 	if err := us.diaryEntryRepo.Save(de); err != nil {
 		return nil, err
 	}

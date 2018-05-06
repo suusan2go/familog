@@ -16,6 +16,17 @@ type DiaryRepository struct {
 
 const diaryKind = "Diary"
 
+func (repo *DiaryRepository) FindByID(id domain.DiaryID) (*domain.Diary, error) {
+	ctx := context.Background()
+	key := datastore.IDKey(diaryKind, int64(id), nil)
+	diary := &domain.Diary{}
+	if err := repo.client.Get(ctx, key, diary); err != nil {
+		return nil, fmt.Errorf("datastoredb: could not get Book: %v", err)
+	}
+	diary.ID = id
+	return diary, nil
+}
+
 func NewDatastoreDiaryRepository(client *datastore.Client) *DiaryRepository {
 	return &DiaryRepository{client}
 }

@@ -10,6 +10,7 @@ type DiaryEntryID int64
 // DiaryEntry struct
 type DiaryEntry struct {
 	ID        DiaryEntryID
+	DiaryID   DiaryID
 	AuthorID  UserID
 	Body      string
 	Emoji     string
