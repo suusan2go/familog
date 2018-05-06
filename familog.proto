@@ -16,7 +16,7 @@ message Diary {
 }
 
 message DiaryEntry {
-  string id = 1;
+  int32 id = 1;
   string body = 2;
   string emoji = 3;
   User user = 4;

@@ -20,6 +20,11 @@ func (r Registry) DiaryRepository() domain.DiaryRepository {
 	return infrads.NewDatastoreDiaryRepository(r.dsc)
 }
 
+// DiaryEntryRepository returns implemented Repository
+func (r Registry) DiaryEntryRepository() domain.DiaryEntryRepository {
+	return infrads.NewDatastoreDiaryEntryRepository(r.dsc)
+}
+
 //// UserRepository returns implemented Struct
 //func (r Registry) UserRepository() domain.UserRepository {
 //	return infrastructure.NewDatastoreUserRepository(r.dsc)
