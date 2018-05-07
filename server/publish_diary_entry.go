@@ -11,14 +11,15 @@ import (
 )
 
 func (s FamilogServer) PublishDiaryEntry(ctx context.Context, r *familog.PublishDiaryEntryRequest) (*familog.PublishDiaryEntryResponse, error) {
-	us := usecase.NewPublishDiaryEntryUsecase(s.Registry.DiaryEntryRepository())
+	us := usecase.NewPublishDiaryEntryUsecase(s.Registry.DiaryEntryRepository(), s.Registry.DiaryRepository())
 	output, err := us.PublishDiaryEntry(usecase.PublishDiaryEntryInput{
+		DiaryID:  domain.DiaryID(r.DiaryId),
 		Body:     r.DiaryEntryForm.Body,
 		Emoji:    r.DiaryEntryForm.Emoji,
 		AuthorID: domain.UserID(0), // TODO
 	})
 	if err != nil {
-		return nil, status.Error(codes.InvalidArgument, "Failed to publish Diary")
+		return nil, status.Error(codes.InvalidArgument, "Failed to publish Diary"+err.Error())
 	}
 	return &familog.PublishDiaryEntryResponse{
 		DiaryEntry: &familog.DiaryEntry{

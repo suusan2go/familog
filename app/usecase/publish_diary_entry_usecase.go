@@ -23,8 +23,8 @@ type PublishDiaryEntryOutput struct {
 	DiaryEntry domain.DiaryEntry
 }
 
-func NewPublishDiaryEntryUsecase(diaryEntryRepo domain.DiaryEntryRepository) PublishDiaryEntryUsecase {
-	return PublishDiaryEntryUsecase{diaryEntryRepo: diaryEntryRepo}
+func NewPublishDiaryEntryUsecase(diaryEntryRepo domain.DiaryEntryRepository, diaryRepo domain.DiaryRepository) PublishDiaryEntryUsecase {
+	return PublishDiaryEntryUsecase{diaryEntryRepo: diaryEntryRepo, diaryRepo: diaryRepo}
 }
 
 func (us *PublishDiaryEntryUsecase) PublishDiaryEntry(input PublishDiaryEntryInput) (*PublishDiaryEntryOutput, error) {

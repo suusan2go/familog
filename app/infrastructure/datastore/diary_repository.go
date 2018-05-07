@@ -19,9 +19,10 @@ const diaryKind = "Diary"
 func (repo *DiaryRepository) FindByID(id domain.DiaryID) (*domain.Diary, error) {
 	ctx := context.Background()
 	key := datastore.IDKey(diaryKind, int64(id), nil)
+	fmt.Printf("%v", key)
 	diary := &domain.Diary{}
 	if err := repo.client.Get(ctx, key, diary); err != nil {
-		return nil, fmt.Errorf("datastoredb: could not get Book: %v", err)
+		return nil, fmt.Errorf("datastoredb: could not get Diary: %v", err)
 	}
 	diary.ID = id
 	return diary, nil

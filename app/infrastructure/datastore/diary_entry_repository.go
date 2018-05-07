@@ -28,7 +28,7 @@ func (repo *DiaryEntryRepository) Save(d *domain.DiaryEntry) error {
 		d.UpdatedAt = time.Now()
 		d.CreatedAt = time.Now()
 	} else {
-		k = datastore.IDKey(diaryEntryKind, int64(r.ID), nil)
+		k = datastore.IDKey(diaryEntryKind, int64(d.ID), nil)
 		d.UpdatedAt = time.Now()
 	}
 	k, err := repo.client.Put(ctx, k, d)
