@@ -37,12 +37,12 @@ spec:
         args: [
           "--http2_port=8080",
           "--service=familog.endpoints.familog-193013.cloud.goog",
-          "--version=2018-05-07r0",
+          "--version=2018-05-07r1",
           "--backend=grpc://127.0.0.1:8000"
         ]
         ports:
           - containerPort: 8080
-      - image: gcr.io/familog-193013/familog:cce562c
+      - image: gcr.io/familog-193013/familog:5d079f5
         imagePullPolicy: Always
         name: familog-backend
         ports:
