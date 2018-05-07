@@ -27,19 +27,29 @@ spec:
       labels:
         app: familog-backend
     spec:
+      volumes:
+      - name: google-cloud-key
+        secret:
+          secretName: familog-server-key
       containers:
       - name: esp
         image: gcr.io/endpoints-release/endpoints-runtime:1
         args: [
           "--http2_port=8080",
           "--service=familog.endpoints.familog-193013.cloud.goog",
-          "--version=2018-05-06r3",
+          "--version=2018-05-07r0",
           "--backend=grpc://127.0.0.1:8000"
         ]
         ports:
           - containerPort: 8080
-      - image: gcr.io/familog-193013/familog:611a270
+      - image: gcr.io/familog-193013/familog:cce562c
         imagePullPolicy: Always
         name: familog-backend
         ports:
           - containerPort: 8000
+        volumeMounts:
+        - name: google-cloud-key
+          mountPath: /var/secrets/google
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /var/secrets/google/key.json
