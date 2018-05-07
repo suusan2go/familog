@@ -23,7 +23,7 @@ func (s FamilogServer) PublishDiaryEntry(ctx context.Context, r *familog.Publish
 	}
 	return &familog.PublishDiaryEntryResponse{
 		DiaryEntry: &familog.DiaryEntry{
-			Id:            int32(output.DiaryEntry.ID),
+			Id:            int64(output.DiaryEntry.ID),
 			Body:          output.DiaryEntry.Body,
 			Emoji:         output.DiaryEntry.Emoji,
 			CoverImageUrl: output.DiaryEntry.PrimaryImage(),

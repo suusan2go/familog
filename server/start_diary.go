@@ -15,7 +15,7 @@ func (s FamilogServer) StartDiary(ctx context.Context, r *familog.StartDiaryRequ
 		return nil, status.Error(codes.InvalidArgument, "Failed to start diary")
 	}
 	d := familog.Diary{
-		Id:    int32(out.Diary.ID),
+		Id:    int64(out.Diary.ID),
 		Title: out.Diary.Title,
 	}
 	return &familog.StartDiaryResponse{Diary: &d}, nil
