@@ -1,9 +1,8 @@
 package server
 
 import (
-	"fmt"
-
 	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/sirupsen/logrus"
 	"github.com/suusan2go/familog"
 	"github.com/suusan2go/familog/app/domain"
 	"github.com/suusan2go/familog/app/usecase"
@@ -19,8 +18,8 @@ func (s FamilogServer) PublishDiaryEntry(ctx context.Context, r *familog.Publish
 		return nil, status.Error(codes.Internal, "Failed to fetch meta data")
 	}
 	result := md["x-endpoint-api-userinfo"]
-	fmt.Printf("metadata: %v", md)
-	fmt.Printf("x-endpoint-api-userinfo: %v", result)
+	logrus.Infof("metadata: %v", md)
+	logrus.Infof("x-endpoint-api-userinfo: %v", result)
 	us := usecase.NewPublishDiaryEntryUsecase(s.Registry.DiaryEntryRepository(), s.Registry.DiaryRepository())
 	output, err := us.PublishDiaryEntry(usecase.PublishDiaryEntryInput{
 		DiaryID:  domain.DiaryID(r.DiaryId),
