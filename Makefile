@@ -26,3 +26,7 @@ docker-push:
 	$(eval HASH := $(shell git rev-parse --short HEAD))
 	gcloud docker -- push gcr.io/${PROJECT_ID}/familog:${HASH}
 	gcloud docker -- push gcr.io/${PROJECT_ID}/familog:latest
+
+docker-build-and-push:
+	make docker-build
+	make docker-push
