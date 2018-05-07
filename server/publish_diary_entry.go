@@ -17,17 +17,17 @@ func (s FamilogServer) PublishDiaryEntry(ctx context.Context, r *familog.Publish
 		Body:     r.DiaryEntryForm.Body,
 		Emoji:    r.DiaryEntryForm.Emoji,
 		AuthorID: domain.UserID(0), // TODO
+		Images:   r.DiaryEntryForm.ImageUrls,
 	})
 	if err != nil {
 		return nil, status.Error(codes.InvalidArgument, "Failed to publish Diary"+err.Error())
 	}
 	return &familog.PublishDiaryEntryResponse{
 		DiaryEntry: &familog.DiaryEntry{
-			Id:            int64(output.DiaryEntry.ID),
-			Body:          output.DiaryEntry.Body,
-			Emoji:         output.DiaryEntry.Emoji,
-			CoverImageUrl: output.DiaryEntry.PrimaryImage(),
-			ImageUrls:     output.DiaryEntry.Images,
+			Id:        int64(output.DiaryEntry.ID),
+			Body:      output.DiaryEntry.Body,
+			Emoji:     output.DiaryEntry.Emoji,
+			ImageUrls: output.DiaryEntry.Images,
 			PublishedAt: &timestamp.Timestamp{
 				Seconds: int64(output.DiaryEntry.CreatedAt.Second()),
 				Nanos:   int32(output.DiaryEntry.CreatedAt.Nanosecond()),
