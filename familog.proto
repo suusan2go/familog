@@ -19,10 +19,9 @@ message DiaryEntry {
   int64 id = 1;
   string body = 2;
   string emoji = 3;
-  User user = 4;
-  string cover_image_url = 5;
-  repeated string image_urls = 6;
-  google.protobuf.Timestamp published_at = 7;
+  User author = 4;
+  repeated string image_urls = 5;
+  google.protobuf.Timestamp published_at = 6;
 }
 
 message StartDiaryRequest {
@@ -61,8 +60,7 @@ message ReadDiaryEntryResponse {
 message DiaryEntryForm {
   string body = 1;
   string emoji = 2;
-  string cover_image_blob = 3;
-  repeated string image_blobs = 4;
+  repeated string image_urls = 3;
 }
 message PublishDiaryEntryRequest {
   DiaryEntryForm diary_entry_form = 1;
