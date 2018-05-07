@@ -5,18 +5,18 @@ package familog;
 import "thirdparty/google/protobuf/timestamp.proto";
 
 message User {
-  int32 id = 1;
+  int64 id = 1;
   string name = 2;
   string avatar_url = 3;
 }
 
 message Diary {
-  int32 id = 1;
+  int64 id = 1;
   string Title = 2;
 }
 
 message DiaryEntry {
-  int32 id = 1;
+  int64 id = 1;
   string body = 2;
   string emoji = 3;
   User user = 4;
@@ -45,14 +45,14 @@ message AllDiariesResponse {
 }
 
 message FindDiaryEntriesRequest {
-  int32 diary_id = 1;
+  int64 diary_id = 1;
 }
 message FindDiaryEntriesResponse {
   repeated DiaryEntry diary_entries = 1;
 }
 
 message ReadDiaryEntryRequest {
-  int32 diary_entry_id = 1;
+  int64 diary_entry_id = 1;
 }
 message ReadDiaryEntryResponse {
   repeated DiaryEntry diary_entries = 1;
@@ -66,14 +66,14 @@ message DiaryEntryForm {
 }
 message PublishDiaryEntryRequest {
   DiaryEntryForm diary_entry_form = 1;
-  int32 diary_id = 2;
+  int64 diary_id = 2;
 }
 message PublishDiaryEntryResponse{
   DiaryEntry diary_entry = 1;
 }
 
 message UpdateDiaryEntryRequest {
-  int32 diary_entry_id = 1;
+  int64 diary_entry_id = 1;
   DiaryEntryForm diary_entry_form = 2;
 }
 message UpdateDiaryEntryResponse {
@@ -87,7 +87,7 @@ message ShowMyProfileResponse {
 }
 
 message FindProfileByUserIdRequest {
-  int32 user_id = 1;
+  int64 user_id = 1;
 }
 message FindProfileByUserIdResponse {
   User user = 1;
