@@ -11,7 +11,8 @@ type StartDiaryUsecase struct {
 
 // StartDiaryInput input parameter
 type StartDiaryInput struct {
-	Title string
+	Title  string
+	UserID domain.UserID
 }
 
 // StartDiaryOutput output parameter
@@ -26,7 +27,7 @@ func NewStartDiaryUsecase(diaryRepo domain.DiaryRepository) StartDiaryUsecase {
 // StartDiary start new diary
 func (us *StartDiaryUsecase) StartDiary(input StartDiaryInput) (*StartDiaryOutput, error) {
 	diary := domain.NewDiary(input.Title)
-	diary.AddSubscriber(domain.UserID(1)) // TODO: Fix Real UserID
+	diary.AddSubscriber(input.UserID)
 	if err := us.diaryRepo.Save(diary); err != nil {
 		return nil, err
 	}
