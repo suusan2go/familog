@@ -5,7 +5,7 @@ import (
 )
 
 // UserID value object
-type UserID int64
+type UserID string
 
 // User User using this service
 type User struct {
