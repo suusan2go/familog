@@ -24,16 +24,16 @@ func NewUserRepository(c *datastore.Client) UserRepository {
 // Save save domain.User to datastore
 func (rp UserRepository) Save(u *domain.User) error {
 	ctx := context.Background()
-	var k *datastore.Key
-	if u.ID == 0 {
-		k = datastore.IncompleteKey(userKind, nil)
+
+	k := datastore.NameKey(userKind, string(u.ID), nil)
+	err := rp.client.Get(ctx, k, &domain.User{}) // 対象のIDで存在するかの確認
+	if err != nil {
 		u.UpdatedAt = time.Now()
 		u.CreatedAt = time.Now()
 	} else {
-		k = datastore.IDKey(userKind, int64(u.ID), nil)
 		u.UpdatedAt = time.Now()
 	}
-	k, err := rp.client.Put(ctx, k, u)
+	k, err = rp.client.Put(ctx, k, u)
 	if err != nil {
 		return fmt.Errorf("datastoredb: could not put User: %v", err)
 	}

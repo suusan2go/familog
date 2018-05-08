@@ -42,7 +42,7 @@ spec:
         ]
         ports:
           - containerPort: 8080
-      - image: gcr.io/familog-193013/familog:5d079f5
+      - image: gcr.io/familog-193013/familog:7b823b7
         imagePullPolicy: Always
         name: familog-backend
         ports:
