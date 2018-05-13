@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/datastore"
+	"github.com/pkg/errors"
 	"github.com/suusan2go/familog/app/domain"
 )
 
@@ -22,7 +23,7 @@ func (repo *DiaryRepository) FindByID(id domain.DiaryID) (*domain.Diary, error) 
 	fmt.Printf("%v", key)
 	diary := &domain.Diary{}
 	if err := repo.client.Get(ctx, key, diary); err != nil {
-		return nil, fmt.Errorf("datastoredb: could not get Diary: %v", err)
+		return nil, mapError(err)
 	}
 	diary.ID = id
 	return diary, nil
@@ -45,7 +46,7 @@ func (repo *DiaryRepository) Save(d *domain.Diary) error {
 	}
 	k, err := repo.client.Put(ctx, k, d)
 	if err != nil {
-		return fmt.Errorf("datastoredb: could not put Diary: %v", err)
+		return mapError(errors.Wrap(err, "datastoredb: could not put Diary"))
 	}
 	d.ID = domain.DiaryID(k.ID)
 	return nil

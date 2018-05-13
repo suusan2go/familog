@@ -2,10 +2,10 @@ package datastore
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"cloud.google.com/go/datastore"
+	"github.com/pkg/errors"
 	"github.com/suusan2go/familog/app/domain"
 )
 
@@ -33,7 +33,7 @@ func (repo *DiaryEntryRepository) Save(d *domain.DiaryEntry) error {
 	}
 	k, err := repo.client.Put(ctx, k, d)
 	if err != nil {
-		return fmt.Errorf("datastoredb: could not put DiaryEntry: %v", err)
+		return mapError(errors.Wrap(err, "datastoredb: could not put DiaryEntry"))
 	}
 	d.ID = domain.DiaryEntryID(k.ID)
 	return nil
