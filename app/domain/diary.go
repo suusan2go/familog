@@ -9,7 +9,7 @@ type DiaryID int64
 
 // Diary struct
 type Diary struct {
-	ID          DiaryID
+	ID          DiaryID `datastore:"-"`
 	Title       string
 	Subscribers []UserID
 	UpdatedAt   time.Time

@@ -9,7 +9,7 @@ type UserID string
 
 // User User using this service
 type User struct {
-	ID        UserID
+	ID        UserID `datastore:"-"`
 	Name      string
 	ImageUrl  string
 	UpdatedAt time.Time

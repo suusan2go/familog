@@ -9,7 +9,7 @@ type DiaryEntryID int64
 
 // DiaryEntry struct
 type DiaryEntry struct {
-	ID        DiaryEntryID
+	ID        DiaryEntryID `datastore:"-"`
 	DiaryID   DiaryID
 	AuthorID  UserID
 	Body      string
